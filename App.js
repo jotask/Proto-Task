@@ -1,13 +1,28 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
-import { Header } from './src/components';
+import {
+  Platform,
+  StyleSheet,
+  Text,
+  View
+} from 'react-native';
+import { StackNavigator } from 'react-navigation';
+import Home from './src/screens/Home';
+import AddItem from './src/screens/AddItem';
+import ListItem from './src/screens/ListItem';
+import { YellowBox } from 'react-native';
+
+YellowBox.ignoreWarnings(['Warning: isMounted(...) is deprecated', 'Module RCTImageLoader']);
+
+const AppNavigator = StackNavigator({
+  HomeScreen: { screen: Home },
+  AddItemScreen: { screen: AddItem },
+  ListItemScreen: { screen: ListItem }
+});
 
 export default class App extends Component {
   render() {
     return (
-      <View>
-        <Header />
-      </View>
+      <AppNavigator />
     );
   }
 }
