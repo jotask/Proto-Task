@@ -5,7 +5,7 @@ import {
   Text,
   View
 } from 'react-native';
-import { StackNavigator } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation';
 import Home from './src/screens/Home';
 import AddItem from './src/screens/AddItem';
 import ListItem from './src/screens/ListItem';
@@ -13,11 +13,16 @@ import { YellowBox } from 'react-native';
 
 YellowBox.ignoreWarnings(['Warning: isMounted(...) is deprecated', 'Module RCTImageLoader']);
 
-const AppNavigator = StackNavigator({
-  HomeScreen: { screen: Home },
-  AddItemScreen: { screen: AddItem },
-  ListItemScreen: { screen: ListItem }
-});
+const AppNavigator = createStackNavigator(
+  {
+    HomeScreen: Home,
+    AddItemScreen: AddItem,
+    ListItemScreen: ListItem
+  },
+  {
+    initialRouteName: 'HomeScreen',
+  }
+);
 
 export default class App extends Component {
   render() {
